@@ -1,10 +1,4 @@
-Use the single prompt below in your bank's VS Code, and skip the public GitHub route. The structure is generic enough to create from a prompt, so there's no need to move files through the internet. Public GitHub adds risk without adding value, and your bank's network or policy may block downloads from it anyway.
 
-On building from scratch: don't. The structure and the working rules are worth reusing, because they're what keeps the bench usable for months. But the context we've built here stays here. The chat memory won't follow you into the bank's VS Code, so you'll need to write the context there yourself, from bank sources. I've listed what to write below.
-
-**The bootstrap prompt (paste into your bank VS Code):**
-
-```
 Set up a working repository for a long-running agentic solution design project in this folder. Thinking partner first, builder second.
 
 1. Create this structure:
@@ -48,5 +42,3 @@ Phase 1 ground rules for every session that follows:
 - `docs/context/`: the data structure for the first capability, using real field names from a sample record that you've anonymised.
 - `CLAUDE.md`: the real constraints. For example, the fact that deployment goes through a governance cycle with a set lead time, and that the deterministic logic has to be exposed in the deployment platform's format.
 - `docs/decisions.md`: the decisions you've already made, each with its reason. Write them in your own words.
-
-Keep names, customer details and internal identifiers out of anything you bring back to this chat. Describe them generically, something like "a KYC summary tool" or "investigation step 4", and I can work from that.
