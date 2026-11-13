@@ -17,7 +17,27 @@ Set up a working repository for a long-running agentic solution design project i
 2. CLAUDE.md must contain:
    - Purpose: [one-line description of the solution]
    - Constraints: [to be filled in; mark anything unknown as TBD]
-   - Working agreements:
+## Current phase
+Brainstorm. (Options: Brainstorm, Design, MVP, Deploy.)
+Update this line when we move phases. The agent does not move to a new phase without this change.
+
+## Phases and what each one allows
+1. **Brainstorm (now):** build the foundation. Deep shares documents, meeting outcomes and his own thinking. The agent reads, asks questions, challenges, and records what matters in docs/. No design sections and no code.
+2. **Design:** write the design spec in docs/design/, versioned. The agent drafts sections only when asked. Every design decision goes in decisions.md.
+3. **MVP:** build a proof of concept on synthetic data only, inside capabilities/ and src/. Build starts only when the phase line says MVP.
+4. **Deploy:** move the MVP into Agent Hub through the governance process. Out of scope for this repo until we reach it.
+
+Moving backwards is allowed at any time. If a design question needs more brainstorming, we return to Brainstorm for that area, record it in the session log, and then continue. Earlier phases are never deleted.
+
+## How we work
+- New material goes into docs/context/ with the date in the filename. Meeting outcomes go into docs/meetings/YYYY-MM-DD-topic.md, with decisions, open questions and actions.
+- At the start of each session, the agent reads CLAUDE.md, the latest session-log entry and open-questions.md, then gives a five-line status.
+- Thinking is recorded as it happens. If a useful idea comes up in conversation, the agent adds it to open-questions.md or the relevant doc before the session ends.
+- The first deliverable is a design, then an MVP. The MVP is a proof of concept, not production code. Its output is judged against the evals in capabilities/*/evals.md.
+- The agent challenges weak ideas and names the one or two issues that matter most. It doesn't just agree.   - Working agreements:
+
+
+
      - Tag facts [stated] (I said it), [source] (from a doc in docs/context), or [assumed] (you inferred). Never present [assumed] as fact.
      - Read docs/ before answering questions about the project.
      - No real customer data, PII or credentials in this repo, ever. Synthetic data only.
