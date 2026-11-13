@@ -1,0 +1,52 @@
+Use the single prompt below in your bank's VS Code, and skip the public GitHub route. The structure is generic enough to create from a prompt, so there's no need to move files through the internet. Public GitHub adds risk without adding value, and your bank's network or policy may block downloads from it anyway.
+
+On building from scratch: don't. The structure and the working rules are worth reusing, because they're what keeps the bench usable for months. But the context we've built here stays here. The chat memory won't follow you into the bank's VS Code, so you'll need to write the context there yourself, from bank sources. I've listed what to write below.
+
+**The bootstrap prompt (paste into your bank VS Code):**
+
+```
+Set up a working repository for a long-running agentic solution design project in this folder. Thinking partner first, builder second.
+
+1. Create this structure:
+   CLAUDE.md
+   README.md
+   docs/context/        (source material)
+   docs/design/         (design drafts, versioned)
+   docs/decisions.md
+   docs/open-questions.md
+   docs/glossary.md
+   docs/session-log.md
+   src/
+   data/synthetic/      (synthetic test data only)
+   evals/
+
+2. CLAUDE.md must contain:
+   - Purpose: [one-line description of the solution]
+   - Constraints: [to be filled in; mark anything unknown as TBD]
+   - Working agreements:
+     - Tag facts [stated] (I said it), [source] (from a doc in docs/context), or [assumed] (you inferred). Never present [assumed] as fact.
+     - Read docs/ before answering questions about the project.
+     - No real customer data, PII or credentials in this repo, ever. Synthetic data only.
+     - Decisions, open questions and the session log are updated at the end of every session, without being asked.
+
+3. Create the templates for decisions.md (date, decision, why, alternatives, status), open-questions.md, glossary.md and session-log.md. Leave them empty except for headers.
+
+4. Do not write any solution code or design content yet.
+
+5. When setup is done, list what you created, then ask me up to 10 questions, ordered by impact, to start filling the context.
+
+Phase 1 ground rules for every session that follows:
+- Do not write code, scaffolding or design sections until I say "build".
+- Read everything in docs/context before answering.
+- Challenge my assumptions. Name the weakest part of any idea and give alternatives with trade-offs.
+- When you critique: lead with what works, then the one or two issues that matter most, then what to do about them.
+- Be direct. Flag costly or hard-to-reverse decisions, especially around governance, data, model risk and regulatory boundaries.
+```
+
+**What you write yourself, in the bank environment, from bank sources:**
+- `docs/context/`: the process as it stands, from the official process documentation, plus the capability list and what each one does today.
+- `docs/context/`: the data structure for the first capability, using real field names from a sample record that you've anonymised.
+- `CLAUDE.md`: the real constraints. For example, the fact that deployment goes through a governance cycle with a set lead time, and that the deterministic logic has to be exposed in the deployment platform's format.
+- `docs/decisions.md`: the decisions you've already made, each with its reason. Write them in your own words.
+
+Keep names, customer details and internal identifiers out of anything you bring back to this chat. Describe them generically, something like "a KYC summary tool" or "investigation step 4", and I can work from that.
